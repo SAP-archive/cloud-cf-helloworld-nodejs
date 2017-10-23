@@ -1,0 +1,20 @@
+[
+	{
+		"name": "SpongeBob",
+		"color": "yellow",
+		"material": "sponge",
+		"id": 0
+	},
+	{
+		"name": "Shaun",
+		"color": "white",
+		"material": "wool",
+		"id": 1
+	},
+	{
+		"name": "Kermitt",
+		"color": "green",
+		"material": "polyester",
+		"id": 2
+	}
+]

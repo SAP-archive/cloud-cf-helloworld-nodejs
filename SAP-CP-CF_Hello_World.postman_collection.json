@@ -1,0 +1,97 @@
+{
+	"variables": [],
+	"info": {
+		"name": "SAP-CP-CF_Hello_World",
+		"_postman_id": "0f295c39-5626-6ceb-6174-5946f395683f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost",
+			"description": "",
+			"item": [
+				{
+					"name": "GET_Users",
+					"request": {
+						"url": "http://localhost:8088/users",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create_POST_User",
+					"request": {
+						"url": "http://localhost:8088/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Donald\",\n  \"color\": \"blue\",\n  \"material\": \"cotton\"\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cloud",
+			"description": "",
+			"item": [
+				{
+					"name": "GET_Users",
+					"request": {
+						"url": "https://<host>/users",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create_POST_User",
+					"request": {
+						"url": "https://<host>/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Donald\",\n  \"color\": \"blue\",\n  \"material\": \"cotton\"\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
