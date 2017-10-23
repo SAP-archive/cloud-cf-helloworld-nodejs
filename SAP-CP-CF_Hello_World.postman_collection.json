@@ -8,49 +8,6 @@
 	},
 	"item": [
 		{
-			"name": "localhost",
-			"description": "",
-			"item": [
-				{
-					"name": "GET_Users",
-					"request": {
-						"url": "http://localhost:8088/users",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Create_POST_User",
-					"request": {
-						"url": "http://localhost:8088/users",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Donald\",\n  \"color\": \"blue\",\n  \"material\": \"cotton\"\n}\n"
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Cloud",
 			"description": "",
 			"item": [
@@ -72,6 +29,23 @@
 					"response": []
 				},
 				{
+					"name": "GET_1_User",
+					"request": {
+						"url": "https://<host>/users/<userId>",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
 					"name": "Create_POST_User",
 					"request": {
 						"url": "https://<host>/users",
@@ -86,6 +60,46 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Donald\",\n  \"color\": \"blue\",\n  \"material\": \"cotton\"\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update_PUT_User",
+					"request": {
+						"url": "https://<host>/users/<userId>",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Donald\",\n  \"color\": \"blue with yellow stripes\",\n  \"material\": \"cotton\"\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_1_User",
+					"request": {
+						"url": "https://<host>/users/<userId>",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": ""
 					},

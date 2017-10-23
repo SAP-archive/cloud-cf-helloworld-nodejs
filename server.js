@@ -2,50 +2,50 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const dbConn = require('./db-conn');
+const dbOp = require('./db-op');
+
+var _db = undefined;
+
+
 function log(logTxt) {
     console.log(logTxt);
 }
 
-const app = express();
 const url = '/users';
-const users = require('./users.json');
 
+const app = express();
 app.use(bodyParser.json());
 
 app.get(url, function (req, res) {
-    log('Get All Request');
-    res.status(200).json(users);
+    dbOp.getAll(_db, res);
 });
 
 app.get(url + '/:id', function (req, res) {
-    // First read existing users.
-    const userId = parseInt(req.params.id);
-    log('Get User Request for id ' + userId);
-
-    const foundUser = users.find(function(user) {
-        return user.id === userId;
-    });
-    if (!foundUser) {
-        res.status(404).end();
-        return;
-    }
-
-    res.status(200).json(foundUser);
+    dbOp.getOne(_db,res, req.params.id);
 });
 
 app.post(url, function (req, res) {
-
-    var newUser = req.body;
-
-    newUser.id = users.length;
-    users.push(newUser);
-
-    log('User added ' + newUser + ' with id: ' + newUser.id);
-
-    res.status(201).json(newUser);
+    dbOp.insertOne(_db, res, req.body);
 });
 
-const PORT = process.env.PORT || 8088;
+app.put(url + '/:id', function (req, res) {
+    dbOp.modifyOne(_db, res, req.params.id, req.body);
+});
+
+app.delete(url + '/:id', function (req, res) {
+    dbOp.deleteOne(_db, res, req.params.id);
+});
+
+function setDBCallback(error, db) {
+    if (error !== null) {
+        log('error when fetching the DB connection ' + JSON.stringify(error));
+        return;
+    }
+    _db = db;
+}
+
+var PORT = process.env.PORT || 8088;
 
 var server = app.listen(PORT, function () {
 
@@ -53,5 +53,7 @@ var server = app.listen(PORT, function () {
     const port = server.address().port;
 
     log('Example app listening at http://' + host + ':' + port);
+
+    dbConn.getDB(setDBCallback);
 
 });
