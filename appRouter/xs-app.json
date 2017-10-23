@@ -3,6 +3,10 @@
     "routes": [{
         "source": "^/hw/",
         "target": "/",
-        "destination": "hw-dest"
+        "destination": "hw-dest",
+        "scope": {
+      		"GET": ["$XSAPPNAME.Display", "$XSAPPNAME.Update"],
+      		"default": "$XSAPPNAME.Update"
+    		}
         }]
 }

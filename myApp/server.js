@@ -52,9 +52,9 @@ const url = '/users';
 const app = express();
 app.use(bodyParser.json());
 
-/* passport.use(new JWTStrategy(xsenv.getServices({uaa:{tag:'xsuaa'}}).uaa));
+passport.use(new JWTStrategy(xsenv.getServices({uaa:{tag:'xsuaa'}}).uaa));
 app.use(passport.initialize());
-app.use(passport.authenticate('JWT', { session: false }));*/
+app.use(passport.authenticate('JWT', { session: false }));
 
 app.get(url, function (req, res) {
     logJWT(req);

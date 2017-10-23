@@ -1,5 +1,32 @@
 {
- "xsappname": "sapcpcfhwxs",
- "tenant-mode": "dedicated",
- "description": "Sample SAP-CP-CF Hello World Restful Service with App Router and XSUAA"
-}
+    "xsappname": "sapcpcfhwxs",
+    "tenant-mode": "dedicated",
+    "description": "Sample SAP-CP-CF Hello World Restful Service with App Router and XSUAA",
+    "scopes": [
+      {
+        "name": "$XSAPPNAME.Display",
+        "description": "Display Users"
+      },
+      {
+        "name": "$XSAPPNAME.Update",
+        "description": "Update Users"
+      }
+    ],
+    "role-templates": [
+      {
+        "name": "Viewer",
+        "description": "View Users",
+        "scope-references": [
+          "$XSAPPNAME.Display"
+        ]
+      },
+      {
+        "name": "Manager",
+        "description": "Maintain Users",
+        "scope-references": [
+          "$XSAPPNAME.Display",
+          "$XSAPPNAME.Update"
+        ]
+      }
+    ]
+  }
