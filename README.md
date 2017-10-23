@@ -1,47 +1,33 @@
-# Chapter 3: Prepare authentication for Node.js RESTful API.
+# Chapter 4: Security Insight 
 
 ## Learning Goal
-After finishing this chapter, you should have a setup that allows you to enable authentication for your RESTful API. You'll gain basic knowledge about [User Identity Management on SAP Cloud Platform](https://blogs.sap.com/2017/05/16/user-identity-management-on-sap-cloud-platform/), you'll learn about [Application Router](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/01c5f9ba7d6847aaaf069d153b981b51.html) and how to use it to [Secure Node.js Applications](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/3a8e4372f8e74d05b4ed03a484865e08.html).
+After finishing this chapter, you should have a basic understanding on how security and authentication work in the SAP Cloud Platform Cloud Foundry Environment and of some libraries that support you in developing secure applications.
 
 ## Prerequisite
 You performed the previous chapter.
 
 
-## Step 1: Create the needed service instances.
+## Step 1: Download the needed libraries and push.
 Perform the following commands:
-```
-cf create-service application-logs lite sapcpcfhw-al
-cf create-service xsuaa application sapcpcfhw-uaa -c security/xs-security.json
-```
-
-## Step 2: Download the app router.
-Download the application router using the following commands:
 ```
 cd myApp
 npm install
-cd ../appRouter
-npm install
 cd ..
+cf push
 ```
 
-## Step 3: Push.
-Perform the following command:
+Test by accessing the URL: `https://<URL for the app router>/hw/users` as described in the previous chapter.  
+
+## Step 2: Check the JSON Web Token (JWT).
+Check the output of the `logJWT()` function by calling `cf logs sapcpcfhw --recent`.  
+You may see info about your user and the JWT token. For more information about JWT and for a Web app to decode it, see [here](https://jwt.io/).  
+Note that browsing the application `https://<URL for your app>/users` still works, as already pointed out in the previous chapter.  
+
+## Step 3: Protect the application.
+Remove the comment marks in the 3 lines containing `passport`-related code in `myApp/server.js`, and perform the following command:
 ```
 cf push
 ```
-Check the output and note down the `URL` for the AppRouter.  
-If you get any naming conflicts, please adjust all the occurrences of `sapcpcfhw` in the manifest.yml to some unique strings, except for the entries in the `services` categories. These must remain stable, as you already created service instances using those names.
-Look up the value in the `urls` field when you push the application, and write down the URL for your application.
-
-## Step 4: Test.
-Browse: `https://<URL for the app router>/hw/users`. You'll be asked to log in; Use the e-mail address and the password you  use to access your SAP Cloud Platform [account](https://account.hanatrial.ondemand.com/).  
-If you want to also test changing operations using the `Postman` extension, follow this procedure:
-1. Start `Postman`, and switch the `Postman Interceptor` on.
-2. Browse `https://<URL for the app router>/hw/users`, and log in if prompted.
-3. Note down the `<URL for the app router>` as you'll have to use it in all the activities below.
-4. Fetch a CSRF token, using the appropriate template `GET_Fetch_CSRF` in the Postman collection `Cloud_AppRouter`. For more information on CSRF in AppRouter, see this [document](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/c19f165084d742e096c5d1625cecd2d4.html#loioc19f165084d742e096c5d1625cecd2d4__section_xj4_pcg_2z). Remember to use the host name you noted down above.
-5. Check the headers in the Response of the call above and write down the value for `x-csrf-token`.
-6. Paste the CSRF token value in the appropriate field in the header of any of the change operations: POST, PUT, DELETE, adjust the URL using the `<URL for the app router>` and perform the call.  
-
-__Note__: Please note that it is still possible to access your application without authentication, as described in the previous chapter, performing calls to `https://<URL for your app>/users`, where `<URL for your app>` is the one you noted down after checking the output of the `cf push` operation above. For information on how to protect this kind of access, see the next chapters.
+Browsing the application `https://<URL for your app>/users` returns a `401 Unauthorized`. That is, the 3 lines ensure that only authenticated calls (using the application router) reach the application.  
+If you browse again `https://<URL for the app router>/hw/users` the call will work, and if you check the logs `cf logs sapcpcfhw --recent` you'll see also information about the SecurityContext Object provided by the [XSSec](https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.02/en-US/54513272339246049bf438a03a8095e4.html#loio54513272339246049bf438a03a8095e4__section_atx_2vt_vt) library.
 

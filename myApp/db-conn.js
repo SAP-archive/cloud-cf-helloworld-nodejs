@@ -16,15 +16,11 @@ const createTable =
 
 function returnUriToDB() {
     var uri = '';
-    if (process.env.VCAP_SERVICES) {
-        // running in cloud
-        uri = xsenv.cfServiceCredentials('sapcpcfhw-db').uri;
-    } else {
-        console.log('running locally is not supported');
-    }
+    // xsenv.loadEnv();
+    // console.log(xsenv.readCFServices());
+    uri = xsenv.cfServiceCredentials('sapcpcfhw-db').uri;
     return uri;
 }
-
 
 function getDB(cb) {
     let pgp = require('pg-promise')({
