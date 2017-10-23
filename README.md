@@ -33,7 +33,7 @@ or:
 ```
 cf api https://api.cf.us10.hana.ondemand.com
 ```
-(depending upon the landscape your account was created in)
+(depending upon the landscape your account was created in)  
 To log on use the following command:
 ```
 cf login
