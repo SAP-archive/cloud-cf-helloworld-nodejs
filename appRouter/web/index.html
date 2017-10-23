@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Split-Screen RESTFul client sample</title>
+
+	<script
+			src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+			data-sap-ui-theme='sap_belize'
+			data-sap-ui-libs='sap.m'
+			data-sap-ui-bindingSyntax='complex'
+			data-sap-ui-resourceroots='{"sap.ui.core.sample.RoutingMasterDetail.restApp": "./restApp"}'>
+	</script>
+
+
+
+	<script>
+		sap.ui.getCore().attachInit(function() {
+			new sap.ui.core.ComponentContainer({
+				height : "100%",
+				name : "sap.ui.core.sample.RoutingMasterDetail.restApp"
+			}).placeAt("content");
+		});
+	</script>
+
+</head>
+<body id="content" style="margin: 0" class="sapUiBody">
+</body>
+</html>

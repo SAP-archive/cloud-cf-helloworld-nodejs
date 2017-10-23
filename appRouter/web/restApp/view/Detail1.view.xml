@@ -1,0 +1,42 @@
+<View
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	controllerName="sap.ui.core.sample.RoutingMasterDetail.restApp.controller.Detail1">
+	<Page
+		id="userPage"
+		title="{name}"
+		showNavButton="{device>/system/phone}"
+		navButtonPress="onNavBack"
+		class="sapUiResponsiveContentPadding">
+		<content>
+			<Panel
+				id="userPanel"
+				width="auto"
+				class="sapUiResponsiveMargin sapUiNoContentPadding">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="Id: {id}" level="H2"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<f:SimpleForm
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout"
+						labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4"
+						columnsL="1" columnsM="1">
+						<f:content>
+							<Label text="Name" />
+							<Text text="{name}" />
+							<Label text="color" />
+							<Text text="{color}" />
+							<Label text="material" />
+							<Text text="{material}" />
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+		</content>
+	</Page>		
+</View>

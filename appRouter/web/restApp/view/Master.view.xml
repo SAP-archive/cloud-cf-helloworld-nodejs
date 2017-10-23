@@ -1,0 +1,35 @@
+<View
+	xmlns="sap.m"
+	xmlns:layout="sap.ui.layout"
+	controllerName="sap.ui.core.sample.RoutingMasterDetail.restApp.controller.Master"
+	id = "MasterView" >
+	<Page
+		title="Users">
+		<content>
+		<List id="users" 
+				items="{/}"
+				mode="SingleSelectMaster"
+				selectionChange="onSelectionChange">
+			<items>
+				<StandardListItem title="{name}" 
+					type="Active"
+					press="onSelectionChange"/>
+			</items>
+		</List>
+		</content>
+        <footer id="masterFooter">
+            <Toolbar id="masterToolbar">
+                <content>
+                    <ToolbarSpacer id="__spacer0"/>
+                    <Button 
+                    	press="addUser" 
+                    	text="" 
+                    	width="40px" 
+                    	id="__newUser" 
+                    	tooltip="Add User" 
+                    	icon="sap-icon://add"/>
+                </content>
+			</Toolbar>
+        </footer>
+	</Page>
+</View>

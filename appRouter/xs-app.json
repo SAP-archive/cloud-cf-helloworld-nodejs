@@ -1,5 +1,8 @@
 {
     "welcomeFile": "index.html",
+	"logout": {
+    	"logoutEndpoint": "/do/logout"
+  	},    
     "routes": [{
         "source": "^/hw/",
         "target": "/",
@@ -8,5 +11,11 @@
       		"GET": ["$XSAPPNAME.Display", "$XSAPPNAME.Update"],
       		"default": "$XSAPPNAME.Update"
     		}
-        }]
+        },
+		{
+      		"source": "^/ui/(.*)",
+      		"target": "$1",
+      		"localDir": "web"
+    	}        
+    ]
 }
