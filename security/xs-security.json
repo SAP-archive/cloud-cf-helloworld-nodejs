@@ -1,0 +1,5 @@
+{
+ "xsappname": "sapcpcfhwxs",
+ "tenant-mode": "dedicated",
+ "description": "Sample SAP-CP-CF Hello World Restful Service with App Router and XSUAA"
+}

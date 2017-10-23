@@ -1,0 +1,8 @@
+{
+    "welcomeFile": "index.html",
+    "routes": [{
+        "source": "^/hw/",
+        "target": "/",
+        "destination": "hw-dest"
+        }]
+}

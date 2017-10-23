@@ -2,13 +2,13 @@
 	"variables": [],
 	"info": {
 		"name": "SAP-CP-CF_Hello_World",
-		"_postman_id": "0f295c39-5626-6ceb-6174-5946f395683f",
+		"_postman_id": "46d688a5-58af-f909-e387-7d6835a57b5c",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Cloud",
+			"name": "Cloud_DirectCall",
 			"description": "",
 			"item": [
 				{
@@ -23,7 +23,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -40,13 +43,16 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "Create_POST_User",
+					"name": "Create_POST_Users",
 					"request": {
 						"url": "https://<host>/users",
 						"method": "POST",
@@ -94,6 +100,143 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cloud_AppRouter",
+			"description": "",
+			"item": [
+				{
+					"name": "GET_Users",
+					"request": {
+						"url": "https://<URL for the app router>/hw/users",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET_1_User",
+					"request": {
+						"url": "https://<URL for the app router>/hw/users/<userId>",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET_Fetch_CSRF",
+					"request": {
+						"url": "https://<URL for the app router>/hw/users",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "x-csrf-token",
+								"value": "fetch",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create_POST_Users",
+					"request": {
+						"url": "https://<URL for the app router>/hw/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "x-csrf-token",
+								"value": "<fetched token>",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Donald\",\n  \"color\": \"blue\",\n  \"material\": \"cotton\"\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update_PUT_User",
+					"request": {
+						"url": "https://<URL for the app router>/hw/users/<userId>",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "x-csrf-token",
+								"value": "<fetched token>",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Donald\",\n  \"color\": \"blue with yellow stripes\",\n  \"material\": \"cotton\"\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_1_User",
+					"request": {
+						"url": "https://<URL for the app router>/hw/users/<userId>",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "x-csrf-token",
+								"value": "<fetched token>",
 								"description": ""
 							}
 						],
