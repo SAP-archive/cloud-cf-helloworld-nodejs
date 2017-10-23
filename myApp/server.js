@@ -57,12 +57,17 @@ app.use(passport.initialize());
 app.use(passport.authenticate('JWT', { session: false }));
 
 app.get(url, function (req, res) {
-    logJWT(req);
-    dbOp.getAll(_db, res);
+    // logJWT(req);
+    dbOp.getAll(_db,res);
 });
 
 app.get(url + '/:id', function (req, res) {
-    dbOp.getOne(_db,res, req.params.id);
+    if (!req.authInfo.checkLocalScope('Update')) {
+        log('Missing the expected scope');
+        res.status(403).end('Forbidden');
+        return;
+    }
+    dbOp.getOne(_db, res, req.params.id);
 });
 
 app.post(url, function (req, res) {
