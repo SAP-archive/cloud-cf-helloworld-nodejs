@@ -1,0 +1,49 @@
+{
+    "rules": {
+        "indent": [
+            2,
+            4
+        ],
+        "no-console" : [
+            0
+        ],
+        "quotes": [
+            2,
+            "single",
+            "avoid-escape"
+        ],
+        "linebreak-style": [
+            2,
+            "unix"
+        ],
+        "semi": [
+            2,
+            "always"
+        ],
+        "curly": 2,
+        "eqeqeq": 2,
+        "no-extend-native": 2,
+        "max-depth": [
+          2,
+          4
+        ],
+        "no-new": 2,
+        "strict": [
+          2,
+          "global"
+        ],
+        "no-trailing-spaces": 2,
+        "space-in-parens": 2,
+        "space-infix-ops": 2,
+        "keyword-spacing": 2,
+        "spaced-comment": 2,
+        "camelcase": 2
+    },
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "extends": "eslint:recommended"
+}
+
+
