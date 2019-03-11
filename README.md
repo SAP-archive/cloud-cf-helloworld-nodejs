@@ -20,7 +20,7 @@ To make this sample application work for you, please make sure you have:
 - An account on SAP Cloud Platform, for example, a [trial account](https://account.hanatrial.ondemand.com/) you may [sign up](https://account.hanatrial.ondemand.com/register) for. For more information about the Sign up process, see this [blog](https://blogs.sap.com/2017/05/16/sap-cloud-platform-trial-now-includes-cloud-foundry/).
 
 ## Download and Installation
-Please [clone this project to your local computer](https://help.github.com/articles/cloning-a-repository/), or [download the ZIP file](archive/master.zip) and extract it. 
+Please [clone this project to your local computer](https://help.github.com/articles/cloning-a-repository/).
 
 Then check out the branches one by one in sequence, and follow the instructions from the respective README document.
 
